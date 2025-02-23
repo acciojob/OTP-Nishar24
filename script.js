@@ -1,36 +1,19 @@
 //your JS code here. If required.
-document.addEventListener("DOMContentLoaded", function() {
-    const inputs = document.querySelectorAll(".code");
+const codeContainer = document.querySelector(".code-container");
+const codes = document.querySelectorAll(".code");
 
-    inputs[0].focus(); // Auto-focus on first input field
+// Automatically focus the next input field when a digit is entered
+codes.forEach((code, index) => {
+  code.addEventListener("input", (e) => {
+    if (e.target.value.length === 1 && index < codes.length - 1) {
+      codes[index + 1].focus();
+    }
+  });
 
-    inputs.forEach((input, index) => {
-        input.addEventListener("input", (event) => {
-            if (event.inputType === "insertText") {
-                // Move to the next input if a number is entered
-                if (index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
-            }
-        });
-
-        input.addEventListener("keydown", (event) => {
-            if (event.key === "Backspace") {
-                if (input.value === "" && index > 0) {
-                    // Move focus to the previous input and clear it
-                    inputs[index - 1].focus();
-                    inputs[index - 1].value = "";
-                }
-            }
-        });
-    });
-
-    // Prevent non-numeric characters
-    inputs.forEach((input) => {
-        input.addEventListener("keypress", (event) => {
-            if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-            }
-        });
-    });
+  // Handle backspace to focus the previous input field
+  code.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace" && index > 0 && e.target.value === "") {
+      codes[index - 1].focus();
+    }
+  });
 });
