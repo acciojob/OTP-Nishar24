@@ -2,7 +2,69 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    text-align: center;
+    max-width: 500px;
+}
+
+#verification_heading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#verification_subtext {
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.code-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.code {
+    width: 60px;
+    height: 80px;
+    border: 2px solid #ccc; /* Default light gray border */
+    border-radius: 10px;
+    font-size: 2rem;
+    text-align: center;
+    background-color: white;
+    transition: border-color 0.2s;
+}
+
+/* Chrome/Safari se arrows hatane ke liye */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* FIX: Click karne par black ki jagah blue color */
+.code:focus {
+    border-color: #3498db; /* Blue color like the image */
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Optional: halka glow */
+}
+
+
+
   justify-content: center;
   height: 100vh;
   background-color: #f4f4f4;
