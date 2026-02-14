@@ -4,12 +4,12 @@ const codes = document.querySelectorAll('.code');
 codes[0].focus();
 
 codes.forEach((code, idx) => {
-    // Shuruat mein value reset
+    // Initial clear taaki boxes khali dikhein
     code.value = '';
 
     code.addEventListener('keydown', (e) => {
         if (e.key >= 0 && e.key <= 9) {
-            // Typing forward logic
+            // Typing forward
             codes[idx].value = ''; 
             setTimeout(() => {
                 if (idx < codes.length - 1) {

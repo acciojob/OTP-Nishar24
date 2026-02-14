@@ -1,14 +1,10 @@
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;* {
+* {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    background-color: #fbfbfb;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,16 +14,19 @@ body {
 
 .main-container {
     text-align: center;
-    max-width: 500px;
+    /* Is width se text teen lines mein break hoga */
+    max-width: 420px; 
 }
 
 #verification_heading {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 #verification_subtext {
     color: #777;
+    font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 30px;
 }
@@ -35,70 +34,31 @@ body {
 .code-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .code {
     width: 60px;
     height: 80px;
-    border: 2px solid #ccc; /* Default light gray border */
-    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
     font-size: 2rem;
     text-align: center;
     background-color: white;
+    font-weight: bold;
     transition: border-color 0.2s;
 }
 
-/* Chrome/Safari se arrows hatane ke liye */
+/* Chrome/Safari arrows removal */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* FIX: Click karne par black ki jagah blue color */
+/* Jab box par click ho (Blue border) */
 .code:focus {
-    border-color: #3498db; /* Blue color like the image */
+    border-color: #3498db; 
     outline: none;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Optional: halka glow */
-}
-
-
-
-  justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-  margin: 0;
-}
-
-#verification_heading {
-  margin-bottom: 10px;
-}
-
-#verification_subtext {
-  margin-bottom: 30px;
-  color: gray;
-  text-align: center;
-  max-width: 400px;
-}
-
-.code-container {
-  display: flex;
-  gap: 10px;
-}
-
-.code {
-  width: 50px;
-  height: 60px;
-  font-size: 24px;
-  text-align: center;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  transition: 0.2s;
-}
-
-.code:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
 }
