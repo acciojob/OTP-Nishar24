@@ -1,28 +1,35 @@
-const codes = document.querySelectorAll('.code');
+const codes = document.querySelectorAll(".code");
 
-// Pehle box par focus
+// Auto focus first input
 codes[0].focus();
 
-codes.forEach((code, idx) => {
-    // Initial clear taaki boxes khali dikhein
-    code.value = '';
+codes.forEach((code, index) => {
 
-    code.addEventListener('keydown', (e) => {
-        if (e.key >= 0 && e.key <= 9) {
-            // Typing forward
-            codes[idx].value = ''; 
-            setTimeout(() => {
-                if (idx < codes.length - 1) {
-                    codes[idx + 1].focus();
-                }
-            }, 10);
-        } else if (e.key === 'Backspace') {
-            // Backspace behavior
-            setTimeout(() => {
-                if (idx > 0) {
-                    codes[idx - 1].focus();
-                }
-            }, 10);
-        }
-    });
+  // Forward typing
+  code.addEventListener("input", (e) => {
+    const value = e.target.value;
+
+    // Allow only digits
+    if (!/^\d$/.test(value)) {
+      e.target.value = "";
+      return;
+    }
+
+    // Move to next field
+    if (index < codes.length - 1) {
+      codes[index + 1].focus();
+    }
+  });
+
+  // Backspace behavior
+  code.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace") {
+
+      if (code.value === "" && index > 0) {
+        codes[index - 1].focus();
+        codes[index - 1].value = "";
+      }
+    }
+  });
+
 });
