@@ -1,17 +1,35 @@
-const codes = document.querySelectorAll('.code');
+const codes = document.querySelectorAll(".code");
 
-// Pehle field par auto-focus
+// Auto focus first input
 codes[0].focus();
 
-codes.forEach((code, idx) => {
-    code.addEventListener('keydown', (e) => {
-        if (e.key >= 0 && e.key <= 9) {
-            // Number enter hone par value clear karke aage badho
-            codes[idx].value = '';
-            setTimeout(() => codes[idx + 1].focus(), 10);
-        } else if (e.key === 'Backspace') {
-            // Backspace par piche wale field par jao
-            setTimeout(() => codes[idx - 1].focus(), 10);
-        }
-    });
+codes.forEach((code, index) => {
+
+  // Forward typing
+  code.addEventListener("input", (e) => {
+    const value = e.target.value;
+
+    // Allow only digits
+    if (!/^\d$/.test(value)) {
+      e.target.value = "";
+      return;
+    }
+
+    // Move to next field
+    if (index < codes.length - 1) {
+      codes[index + 1].focus();
+    }
+  });
+
+  // Backspace behavior
+  code.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace") {
+
+      if (code.value === "" && index > 0) {
+        codes[index - 1].focus();
+        codes[index - 1].value = "";
+      }
+    }
+  });
+
 });
