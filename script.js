@@ -1,19 +1,17 @@
-//your JS code here. If required.
-const codeContainer = document.querySelector(".code-container");
-const codes = document.querySelectorAll(".code");
+const codes = document.querySelectorAll('.code');
 
-// Automatically focus the next input field when a digit is entered
-codes.forEach((code, index) => {
-  code.addEventListener("input", (e) => {
-    if (e.target.value.length === 1 && index < codes.length - 1) {
-      codes[index + 1].focus();
-    }
-  });
+// Pehle field par auto-focus
+codes[0].focus();
 
-  // Handle backspace to focus the previous input field
-  code.addEventListener("keydown", (e) => {
-    if (e.key === "Backspace" && index > 0 && e.target.value === "") {
-      codes[index - 1].focus();
-    }
-  });
+codes.forEach((code, idx) => {
+    code.addEventListener('keydown', (e) => {
+        if (e.key >= 0 && e.key <= 9) {
+            // Number enter hone par value clear karke aage badho
+            codes[idx].value = '';
+            setTimeout(() => codes[idx + 1].focus(), 10);
+        } else if (e.key === 'Backspace') {
+            // Backspace par piche wale field par jao
+            setTimeout(() => codes[idx - 1].focus(), 10);
+        }
+    });
 });
