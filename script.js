@@ -9,7 +9,7 @@ codes.forEach((code, idx) => {
 
     code.addEventListener('keydown', (e) => {
         if (e.key >= 0 && e.key <= 9) {
-            // Typing forward
+            // Typing forward  // samjh nhi aaya
             codes[idx].value = ''; 
             setTimeout(() => {
                 if (idx < codes.length - 1) {
